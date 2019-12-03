@@ -14,9 +14,9 @@ public class EquationSolver {
         if (isEquationIncorrect(a)) {
             System.out.println("Equation must be quadratic.\n Please check entered parameters and try again!");
         } else {
-            double D = evaluateDiscriminant(a, b, c);
-            if (hasRoots(D)) {
-                yieldRoots(a, b, c, D);
+            double d = evaluateDiscriminant(a, b, c);
+            if (hasRoots(d)) {
+                yieldRoots(a, b, c, d);
             } else {
                 System.out.println("Particularly this equation has no solution!");
             }
@@ -40,8 +40,8 @@ public class EquationSolver {
     }
 
     private static double evaluateDiscriminant(double a, double b, double c) {
-        double D = b * b - 4 * a * c;
-        return D;
+        double d = b * b - 4 * a * c;
+        return d;
     }
 
     private static boolean isEquationIncorrect(double a) {
