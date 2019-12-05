@@ -6,6 +6,7 @@ import static java.lang.Math.sqrt;
  * Program for solving quadratic equations of view:
  * a*x^2+b*x+c=0 where a,b,c represent polynomial coefficients
  * Checks correctness of arguments ,then prints out roots or root of equation.
+ *@author Andrei Dunai
  */
 public class quadraticEquation {
     private Double discriminant;
@@ -16,8 +17,12 @@ public class quadraticEquation {
 
 
     public static void main(String[] args) {
-        quadraticEquation equationToSolve = createEquation(-7, -6, -9);
-        equationToSolve.solveEquation();
+        quadraticEquation equationToSolve = new quadraticEquation(1, 6, 9);
+        equationToSolve.displaySolution();
+    }
+
+    private void displaySolution() {
+        System.out.println(toString());
     }
 
 
@@ -31,37 +36,31 @@ public class quadraticEquation {
     }
 
 
-    public static quadraticEquation createEquation(double a, double b, double c) {
-        return new quadraticEquation(a, b, c);
-    }
-
     //other methods
-    private void solveEquation() {
+    private String solveEquation() {
         switch (equationType) {
-            case "No roots":
-                System.out.println("This equation has no solution!");
-                break;
-            case "One root":
+            case "no roots":
+                return "";
+            case "one root":
                 double answer = -b / (2 * a);
-                System.out.println("Equation has only one solution " + answer);
-                break;
-            case "Two roots":
+                return String.valueOf(answer);
+            case "two roots":
                 double x1 = ((-b) + sqrt(discriminant)) / (2 * a);
                 double x2 = ((-b) - sqrt(discriminant)) / (2 * a);
-                System.out.println("Equation has two solutions " + x1 + " " + x2);
-                break;
+                return (x1 + " and " + x2);
             default:
         }
+        return "";
     }
 
 
     private String determineType() {
         if (discriminant == 0) {
-            return "One root";
+            return "one root";
         } else if (discriminant < 0) {
-            return "No roots";
+            return "no roots";
         } else {
-            return "Two roots";
+            return "two roots";
         }
     }
 
@@ -71,4 +70,11 @@ public class quadraticEquation {
         return discriminant;
     }
 
+    @Override
+    public String toString() {
+        return "(" + a + "x^2" + ") + " + "(" +
+                b + "x) + " + "(" +
+                c + ")" + " = 0  has " + determineType() + "\n" + solveEquation();
+
+    }
 }
