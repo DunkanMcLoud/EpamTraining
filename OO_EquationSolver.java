@@ -23,11 +23,11 @@ public class quadraticEquation {
 
     //constructors
     public quadraticEquation(double a, double b, double c) {
-        setA(a);
-        setB(b);
-        setC(c);
-        setDiscriminant();
-        setEquationType();
+        this.a=a;
+        this.b=b;
+        this.c=c;
+        this.discriminant=evaluateDiscriminant();
+        this.equationType=determineType();
     }
 
 
@@ -35,6 +35,7 @@ public class quadraticEquation {
         return new quadraticEquation(a, b, c);
     }
 
+    //other methods
     private void solveEquation() {
         switch (equationType) {
             case "No roots":
@@ -68,28 +69,6 @@ public class quadraticEquation {
     private Double evaluateDiscriminant() {
         double discriminant = pow(b, 2) - 4 * a * c;
         return discriminant;
-    }
-
-
-    //setters
-    public void setA(double a) {
-        this.a = a;
-    }
-
-    public void setB(double b) {
-        this.b = b;
-    }
-
-    public void setC(double c) {
-        this.c = c;
-    }
-
-    public void setDiscriminant() {
-        this.discriminant = evaluateDiscriminant();
-    }
-
-    public void setEquationType() {
-        this.equationType = determineType();
     }
 
 }
