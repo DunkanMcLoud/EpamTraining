@@ -59,10 +59,9 @@ public class quadraticEquation {
             return "One root";
         } else if (discriminant < 0) {
             return "No roots";
-        } else if (discriminant > 0) {
+        } else {
             return "Two roots";
         }
-        return null;   ///question!!
     }
 
 
