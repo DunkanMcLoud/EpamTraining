@@ -23,11 +23,11 @@ public class quadraticEquation {
 
     //constructors
     public quadraticEquation(double a, double b, double c) {
-        this.a=a;
-        this.b=b;
-        this.c=c;
-        this.discriminant=evaluateDiscriminant();
-        this.equationType=determineType();
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.discriminant = evaluateDiscriminant();
+        this.equationType = determineType();
     }
 
 
