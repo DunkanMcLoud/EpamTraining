@@ -10,17 +10,84 @@ public class Storage {
     static CarrierStorage carriers = new CarrierStorage(MIN_ARRAY_SIZE);
     static TransportationStorage transportations = new TransportationStorage(MIN_ARRAY_SIZE);
 
+
     public static void addCargo(Cargo cargo) {
         cargos.addCargo(cargo);
+    }
+
+    public static Cargo getCargoByID(long id) {
+        Cargo answer = cargos.searchByIDs(id);
+        if (answer != null) {
+            return answer;
+        } else {
+            System.out.println("Object not exists");
+            return null;
+        }
+    }
+
+    public static String getCargosByName(String name) {
+        Cargo[] answer = cargos.searchByName(name);
+        if (isArrayNotEmpty(answer)) {
+            return displayAsString(answer);
+        } else {
+            return "There is no Cargo you want to find \n";
+        }
     }
 
     public static void addCarrier(Carrier carrier) {
         carriers.addCarrier(carrier);
     }
 
+    public static Carrier getCarrierByID(long id) {
+        Carrier answer = carriers.searchByIDs(id);
+        if (answer != null) {
+            return answer;
+        } else {
+            System.out.println("Object not exists");
+            return null;
+        }
+    }
+
+    public static String getCarrierByName(String name) {
+        Carrier[] answer = carriers.searchByName(name);
+        if (isArrayNotEmpty(answer)) {
+            return displayAsString(answer);
+        } else {
+            return "There is no Carrier you want to find\n";
+        }
+    }
 
     public static void addTransportation(Transportation transportation) {
         transportations.addTransportation(transportation);
+    }
+
+    public static Transportation getTransportationByID(long id) {
+        Transportation answer = transportations.searchByIDs(id);
+        if (answer != null) {
+            return answer;
+        } else {
+            System.out.println("Object not exists");
+            return null;
+        }
+    }
+
+    public static String getTransportationByName(String name) {
+        Transportation[] answer = transportations.searchByName(name);
+        if (isArrayNotEmpty(answer)) {
+            return displayAsString(answer);
+        } else {
+            return "There is no Transportation you want to find \n";
+        }
+    }
+
+    private static boolean isArrayNotEmpty(Object[] array) {
+        boolean flag = false;
+        for (Object obj: array){
+            if (obj!=null){
+                flag=true;
+            }
+        }
+        return flag;
     }
 
     public static void displayAllCargo() {
@@ -33,42 +100,6 @@ public class Storage {
 
     public static void displayAllTransportation() {
         transportations.displayTransportations();
-    }
-
-
-    public static Object getbyID(long id) {
-        Cargo searchInCargos = cargos.searchByIDs(id);
-        if (searchInCargos != null) {
-            return searchInCargos;
-        } else {
-            Carrier searchInCarriers = carriers.searchByIDs(id);
-            if (searchInCarriers != null) {
-                return searchInCarriers;
-            } else {
-                Transportation searchInTransportation = transportations.searchByIDs(id);
-                if (searchInTransportation != null) {
-                    return searchInTransportation;
-                } else {
-                    System.out.println("Object not exists");
-                    return null;
-                }
-            }
-        }
-    }
-
-
-    public static String getByName(String name) {
-        String low_name = name.toLowerCase();
-        Object[] searchInCargos = cargos.searchByName(low_name);
-        Object[] searchInCarriers = carriers.searchByName(low_name);
-        Object[] searchInTransportation = transportations.searchByName(low_name);
-        Object[] answer = mergeArrays(searchInCargos, searchInCarriers, searchInTransportation);
-        if (answer != null) {
-            return displayAsString(answer);
-        } else {
-            System.out.println("Object not exists");
-            return null;
-        }
     }
 
     private static String displayAsString(Object[] array) {
@@ -105,6 +136,10 @@ public class Storage {
         }
         return answer;
     }
+
+    private Storage() {
+    }
+
 
     private static class CargoStorage {
         private int lastIndex = 0;
@@ -149,6 +184,7 @@ public class Storage {
         }
 
         Cargo[] searchByName(String name) {
+            name = name.toLowerCase();
             Cargo[] answer = new Cargo[1];
             int counter = 0;
             for (Cargo cargo : cargos) {
@@ -210,6 +246,7 @@ public class Storage {
 
 
         Carrier[] searchByName(String name) {
+            name = name.toLowerCase();
             Carrier[] answer = new Carrier[1];
             int counter = 0;
             for (Carrier carrier : carriers) {
@@ -270,6 +307,7 @@ public class Storage {
         }
 
         Transportation[] searchByName(String name) {
+            name = name.toLowerCase();
             Transportation[] answer = new Transportation[1];
             int counter = 0;
             for (Transportation transportation : transportations) {
@@ -285,10 +323,6 @@ public class Storage {
             return answer;
         }
     }
-
-    private Storage() {
-    }
-
 
 
 }
