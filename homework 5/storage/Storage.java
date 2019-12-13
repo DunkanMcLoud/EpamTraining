@@ -1,8 +1,8 @@
 package ru.epam.javacore.lesson_4.homework.storage;
 
-import ru.epam.javacore.lesson_4.homework.cargo.Cargo;
-import ru.epam.javacore.lesson_4.homework.carrier.Carrier;
-import ru.epam.javacore.lesson_4.homework.transportation.Transportation;
+        import ru.epam.javacore.lesson_4.homework.cargo.Cargo;
+        import ru.epam.javacore.lesson_4.homework.carrier.Carrier;
+        import ru.epam.javacore.lesson_4.homework.transportation.Transportation;
 
 public class Storage {
     protected static final int MIN_ARRAY_SIZE = 1; //i've putted 1 in order to test resizing of array
@@ -25,13 +25,9 @@ public class Storage {
         }
     }
 
-    public static String getCargosByName(String name) {
+    public static Cargo[] getCargosByName(String name) {
         Cargo[] answer = cargos.searchByName(name);
-        if (isArrayNotEmpty(answer)) {
-            return displayAsString(answer);
-        } else {
-            return "There is no Cargo you want to find \n";
-        }
+        return answer;
     }
 
     public static void addCarrier(Carrier carrier) {
@@ -48,13 +44,9 @@ public class Storage {
         }
     }
 
-    public static String getCarrierByName(String name) {
+    public static Carrier[] getCarrierByName(String name) {
         Carrier[] answer = carriers.searchByName(name);
-        if (isArrayNotEmpty(answer)) {
-            return displayAsString(answer);
-        } else {
-            return "There is no Carrier you want to find\n";
-        }
+        return answer;
     }
 
     public static void addTransportation(Transportation transportation) {
@@ -71,23 +63,9 @@ public class Storage {
         }
     }
 
-    public static String getTransportationByName(String name) {
+    public static Transportation[] getTransportationsByName(String name) {
         Transportation[] answer = transportations.searchByName(name);
-        if (isArrayNotEmpty(answer)) {
-            return displayAsString(answer);
-        } else {
-            return "There is no Transportation you want to find \n";
-        }
-    }
-
-    private static boolean isArrayNotEmpty(Object[] array) {
-        boolean flag = false;
-        for (Object obj: array){
-            if (obj!=null){
-                flag=true;
-            }
-        }
-        return flag;
+        return answer;
     }
 
     public static void displayAllCargo() {
@@ -102,40 +80,6 @@ public class Storage {
         transportations.displayTransportations();
     }
 
-    private static String displayAsString(Object[] array) {
-        StringBuilder answer = new StringBuilder();
-        for (Object obj : array) {
-            if (obj != null) {
-                answer.append(obj.toString());
-                answer.append(" ; \n");
-            }
-        }
-        return answer.toString();
-    }
-
-    private static Object[] mergeArrays(Object[] inCargos, Object[] inCarriers, Object[] inTransportation) {
-        Object[] answer = new Object[inCargos.length + inCarriers.length + inTransportation.length];
-        int index = 0;
-        for (Object obj : inCargos) {
-            if (obj != null) {
-                answer[index] = obj;
-                index++;
-            }
-        }
-        for (Object obj : inCarriers) {
-            if (obj != null) {
-                answer[index] = obj;
-                index++;
-            }
-        }
-        for (Object obj : inTransportation) {
-            if (obj != null) {
-                answer[index] = obj;
-                index++;
-            }
-        }
-        return answer;
-    }
 
     private Storage() {
     }
