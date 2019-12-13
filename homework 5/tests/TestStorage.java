@@ -33,15 +33,15 @@ public class TestStorage {
         c2 = new CargoClothes();
         c3 = new CargoComputers();
         c1.setId(); //0
-        c1.setName("Vodka");
+        c1.setName("APPLE");
         c1.setWeight(3);
 
         c2.setWeight(3);
-        c2.setName("Astronaut Suite");
+        c2.setName("Shirt");
         c2.setId(); // 1
 
         c3.setId(); // 2
-        c3.setName("IPhuck");
+        c3.setName("aPPlE");
         c3.setWeight(10000);
 
         //TODO transportations[]
@@ -64,9 +64,9 @@ public class TestStorage {
         carrier2.setAddress("Baker Street,21/b");
         carrier3.setAddress("Moscow,Kremlin");
 
-        carrier1.setName("Danila Bagrov");
-        carrier2.setName("John Watson");
-        carrier3.setName("Vladimir Putin");
+        carrier1.setName("Jack");
+        carrier2.setName("Bekky");
+        carrier3.setName("Jeff");
 
         //TODO transportations[]
 
@@ -92,9 +92,9 @@ public class TestStorage {
         t2.setDate(new Date(2019, 12, 10));
         t3.setDate(new Date(2019, 12, 10));
 
-        t1.setBillTo("Mr Mannies");
-        t2.setBillTo("Queen Elizabeth");
-        t3.setBillTo("Kompot");
+        t1.setBillTo("Marvin");
+        t2.setBillTo("Bekky");
+        t3.setBillTo("Jeff");
 
         t1.setDescription("Where is power?");
         t2.setDescription("He is on high again");
@@ -167,22 +167,9 @@ public class TestStorage {
         Storage.addTransportation(t2);
         Storage.addTransportation(t3);
 
-        Assert.assertEquals(c1,Storage.getByName("VODKA"));
-        Assert.assertEquals(c2,Storage.getByName("ASTRONAUT SUITE"));
-
-        Assert.assertEquals(c3,Storage.getByName("iphuck"));
-
-        Assert.assertEquals(carrier1,Storage.getByName("danila bagrov"));
-
-        Assert.assertEquals(carrier2,Storage.getByName("john watson"));
-
-        Assert.assertEquals(carrier3,Storage.getByName("vladimir putin"));
-
-        Assert.assertEquals(t1,Storage.getByName("Mr Mannies"));
-
-        Assert.assertEquals(t2,Storage.getByName("Queen Elizabeth"));
-
-        Assert.assertEquals(t3,Storage.getByName("kompot"));
+        System.out.println(Storage.getByName("APPLE"));
+        System.out.println(Storage.getByName("Jeff"));
+        System.out.println(Storage.getByName("Jack"));
 
     }
 

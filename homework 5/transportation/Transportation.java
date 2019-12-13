@@ -3,10 +3,11 @@ package ru.epam.javacore.lesson_4.homework.transportation;
 import ru.epam.javacore.lesson_4.homework.ID_generator;
 import ru.epam.javacore.lesson_4.homework.cargo.Cargo;
 import ru.epam.javacore.lesson_4.homework.carrier.Carrier;
+import ru.epam.javacore.lesson_4.homework.common.Domain;
 
 import java.util.Date;
 
-public class Transportation {
+public class Transportation implements Domain {
     private Long id;
     private Cargo cargo;
     private Carrier carrier;
@@ -22,10 +23,12 @@ public class Transportation {
         this.date = date;
     }
 
+    @Override
     public Long getId() {
         return id;
     }
 
+    @Override
     public void setId() {
         this.id = ID_generator.generateID();
     }

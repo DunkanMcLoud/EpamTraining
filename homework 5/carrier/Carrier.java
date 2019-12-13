@@ -1,21 +1,24 @@
 package ru.epam.javacore.lesson_4.homework.carrier;
 
 import ru.epam.javacore.lesson_4.homework.ID_generator;
+import ru.epam.javacore.lesson_4.homework.common.Domain;
 import ru.epam.javacore.lesson_4.homework.transportation.Transportation;
 
 import java.util.Arrays;
 
-public class Carrier {
+public class Carrier implements Domain {
     private Long id;
     private String name;
     private String address;
     private CarrierType carrierType;
     private Transportation[] transportations;
 
+    @Override
     public Long getId() {
         return id;
     }
 
+    @Override
     public void setId() {
         this.id = ID_generator.generateID();
     }
