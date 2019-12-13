@@ -136,22 +136,22 @@ public class TestStorage {
         Storage.addTransportation(t1);
         Storage.addTransportation(t2);
         Storage.addTransportation(t3);
-        Assert.assertEquals(c1,Storage.getbyID(0));
-        Assert.assertEquals(c2,Storage.getbyID(1));
+        Assert.assertEquals(c1,Storage.getCargoByID(0));
+        Assert.assertEquals(c2,Storage.getCargoByID(1));
 
-        Assert.assertEquals(c3,Storage.getbyID(2));
+        Assert.assertEquals(c3,Storage.getCargoByID(2));
 
-        Assert.assertEquals(carrier1,Storage.getbyID(3));
+        Assert.assertEquals(carrier1,Storage.getCarrierByID(3));
 
-        Assert.assertEquals(carrier2,Storage.getbyID(4));
+        Assert.assertEquals(carrier2,Storage.getCarrierByID(4));
 
-        Assert.assertEquals(carrier3,Storage.getbyID(5));
+        Assert.assertEquals(carrier3,Storage.getCarrierByID(5));
 
-        Assert.assertEquals(t1,Storage.getbyID(6));
+        Assert.assertEquals(t1,Storage.getTransportationByID(6));
 
-        Assert.assertEquals(t2,Storage.getbyID(7));
+        Assert.assertEquals(t2,Storage.getTransportationByID(7));
 
-        Assert.assertEquals(t3,Storage.getbyID(8));
+        Assert.assertEquals(t3,Storage.getTransportationByID(8));
 
     }
 
@@ -167,9 +167,10 @@ public class TestStorage {
         Storage.addTransportation(t2);
         Storage.addTransportation(t3);
 
-        System.out.println(Storage.getByName("APPLE"));
-        System.out.println(Storage.getByName("Jeff"));
-        System.out.println(Storage.getByName("Jack"));
+        System.out.println(Storage.getCargosByName("APPLE"));
+        System.out.println(Storage.getCargosByName("Plum"));
+        System.out.println(Storage.getCarrierByName("Jeff"));
+        System.out.println(Storage.getTransportationByName("Jack"));
 
     }
 
