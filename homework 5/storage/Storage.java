@@ -37,15 +37,15 @@ public class Storage {
 
 
     public static Object getbyID(long id) {
-        Cargo searchInCargos = cargos.searchID(id);
+        Cargo searchInCargos = cargos.searchByIDs(id);
         if (searchInCargos != null) {
             return searchInCargos;
         } else {
-            Carrier searchInCarriers = carriers.searchID(id);
+            Carrier searchInCarriers = carriers.searchByIDs(id);
             if (searchInCarriers != null) {
                 return searchInCarriers;
             } else {
-                Transportation searchInTransportation = transportations.searchID(id);
+                Transportation searchInTransportation = transportations.searchByIDs(id);
                 if (searchInTransportation != null) {
                     return searchInTransportation;
                 } else {
@@ -139,7 +139,7 @@ public class Storage {
             }
         }
 
-        Cargo searchID(long id) {
+        Cargo searchByIDs(long id) {
             for (Cargo cargo : cargos) {
                 if (cargo != null && id == cargo.getId()) {
                     return cargo;
@@ -199,7 +199,7 @@ public class Storage {
             carriersSize = carriers.length;
         }
 
-        Carrier searchID(long id) {
+        Carrier searchByIDs(long id) {
             for (Carrier carrier : carriers) {
                 if (carrier != null && id == carrier.getId()) {
                     return carrier;
@@ -260,7 +260,7 @@ public class Storage {
             transportationSize = transportations.length;
         }
 
-        Transportation searchID(long id) {
+        Transportation searchByIDs(long id) {
             for (Transportation transportation : transportations) {
                 if (transportation != null && id == transportation.getId()) {
                     return transportation;
