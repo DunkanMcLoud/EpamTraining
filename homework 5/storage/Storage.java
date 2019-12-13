@@ -10,6 +10,102 @@ public class Storage {
     static CarrierStorage carriers = new CarrierStorage(MIN_ARRAY_SIZE);
     static TransportationStorage transportations = new TransportationStorage(MIN_ARRAY_SIZE);
 
+    public static void addCargo(Cargo cargo) {
+        cargos.addCargo(cargo);
+    }
+
+    public static void addCarrier(Carrier carrier) {
+        carriers.addCarrier(carrier);
+    }
+
+
+    public static void addTransportation(Transportation transportation) {
+        transportations.addTransportation(transportation);
+    }
+
+    public static void displayAllCargo() {
+        cargos.displayCargos();
+    }
+
+    public static void displayAllCarriers() {
+        carriers.displayCarriers();
+    }
+
+    public static void displayAllTransportation() {
+        transportations.displayTransportations();
+    }
+
+
+    public static Object getbyID(long id) {
+        Cargo searchInCargos = cargos.searchID(id);
+        if (searchInCargos != null) {
+            return searchInCargos;
+        } else {
+            Carrier searchInCarriers = carriers.searchID(id);
+            if (searchInCarriers != null) {
+                return searchInCarriers;
+            } else {
+                Transportation searchInTransportation = transportations.searchID(id);
+                if (searchInTransportation != null) {
+                    return searchInTransportation;
+                } else {
+                    System.out.println("Object not exists");
+                    return null;
+                }
+            }
+        }
+    }
+
+
+    public static String getByName(String name) {
+        String low_name = name.toLowerCase();
+        Object[] searchInCargos = cargos.searchByName(low_name);
+        Object[] searchInCarriers = carriers.searchByName(low_name);
+        Object[] searchInTransportation = transportations.searchByName(low_name);
+        Object[] answer = mergeArrays(searchInCargos, searchInCarriers, searchInTransportation);
+        if (answer != null) {
+            return displayAsString(answer);
+        } else {
+            System.out.println("Object not exists");
+            return null;
+        }
+    }
+
+    private static String displayAsString(Object[] array) {
+        StringBuilder answer = new StringBuilder();
+        for (Object obj : array) {
+            if (obj != null) {
+                answer.append(obj.toString());
+                answer.append(" ; \n");
+            }
+        }
+        return answer.toString();
+    }
+
+    private static Object[] mergeArrays(Object[] inCargos, Object[] inCarriers, Object[] inTransportation) {
+        Object[] answer = new Object[inCargos.length + inCarriers.length + inTransportation.length];
+        int index = 0;
+        for (Object obj : inCargos) {
+            if (obj != null) {
+                answer[index] = obj;
+                index++;
+            }
+        }
+        for (Object obj : inCarriers) {
+            if (obj != null) {
+                answer[index] = obj;
+                index++;
+            }
+        }
+        for (Object obj : inTransportation) {
+            if (obj != null) {
+                answer[index] = obj;
+                index++;
+            }
+        }
+        return answer;
+    }
+
     private static class CargoStorage {
         private int lastIndex = 0;
         private Cargo[] cargos;
@@ -194,101 +290,7 @@ public class Storage {
     }
 
 
-    public static void addCargo(Cargo cargo) {
-        cargos.addCargo(cargo);
-    }
 
-    public static void addCarrier(Carrier carrier) {
-        carriers.addCarrier(carrier);
-    }
-
-
-    public static void addTransportation(Transportation transportation) {
-        transportations.addTransportation(transportation);
-    }
-
-    public static void displayAllCargo() {
-        cargos.displayCargos();
-    }
-
-    public static void displayAllCarriers() {
-        carriers.displayCarriers();
-    }
-
-    public static void displayAllTransportation() {
-        transportations.displayTransportations();
-    }
-
-
-    public static Object getbyID(long id) {
-        Cargo searchInCargos = cargos.searchID(id);
-        if (searchInCargos != null) {
-            return searchInCargos;
-        } else {
-            Carrier searchInCarriers = carriers.searchID(id);
-            if (searchInCarriers != null) {
-                return searchInCarriers;
-            } else {
-                Transportation searchInTransportation = transportations.searchID(id);
-                if (searchInTransportation != null) {
-                    return searchInTransportation;
-                } else {
-                    System.out.println("Object not exists");
-                    return null;
-                }
-            }
-        }
-    }
-
-
-    public static String getByName(String name) {
-        String low_name = name.toLowerCase();
-        Object[] searchInCargos = cargos.searchByName(low_name);
-        Object[] searchInCarriers = carriers.searchByName(low_name);
-        Object[] searchInTransportation = transportations.searchByName(low_name);
-        Object[] answer = mergeArrays(searchInCargos, searchInCarriers, searchInTransportation);
-        if (answer != null) {
-            return displayAsString(answer);
-        } else {
-            System.out.println("Object not exists");
-            return null;
-        }
-    }
-
-    private static String displayAsString(Object[] array) {
-        StringBuilder answer = new StringBuilder();
-        for (Object obj : array) {
-            if (obj != null) {
-                answer.append(obj.toString());
-                answer.append(" ; \n");
-            }
-        }
-        return answer.toString();
-    }
-
-    private static Object[] mergeArrays(Object[] inCargos, Object[] inCarriers, Object[] inTransportation) {
-        Object[] answer = new Object[inCargos.length + inCarriers.length + inTransportation.length];
-        int index = 0;
-        for (Object obj : inCargos) {
-            if (obj != null) {
-                answer[index] = obj;
-                index++;
-            }
-        }
-        for (Object obj : inCarriers) {
-            if (obj != null) {
-                answer[index] = obj;
-                index++;
-            }
-        }
-        for (Object obj : inTransportation) {
-            if (obj != null) {
-                answer[index] = obj;
-                index++;
-            }
-        }
-        return answer;
-    }
 }
 
 
