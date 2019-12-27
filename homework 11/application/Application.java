@@ -15,8 +15,8 @@ import ru.epam.javacore.lesson_10_generics.homework.cargo.service.CargoService;
 import ru.epam.javacore.lesson_10_generics.homework.carrier.service.CarrierService;
 import ru.epam.javacore.lesson_10_generics.homework.common.solutions.search.OrderType;
 import ru.epam.javacore.lesson_10_generics.homework.common.solutions.utils.CollectionUtils;
-import ru.epam.javacore.lesson_10_generics.homework.storage.initor.InMemoryStorageInitor;
 import ru.epam.javacore.lesson_10_generics.homework.storage.initor.StorageInitor;
+import ru.epam.javacore.lesson_10_generics.homework.storage.initor.OutSrcFileInitor;
 import ru.epam.javacore.lesson_10_generics.homework.transportation.service.TransportationService;
 
 import java.util.Arrays;
@@ -37,7 +37,7 @@ public class Application {
     carrierService = ServiceHolder.getInstance().getCarrierService();
     transportationService = ServiceHolder.getInstance().getTransportationService();
 
-    StorageInitor storageInitor = new InMemoryStorageInitor();
+    StorageInitor storageInitor = new OutSrcFileInitor("/home/dunkan/Рабочий стол/EPAM homework/epamjavacore/src/ru/epam/javacore/lesson_10_generics/homework/storage/outsource_initor/Storage");
     storageInitor.initStorage();
 
     printStorageData();
