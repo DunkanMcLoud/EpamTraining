@@ -1,0 +1,14 @@
+ALL CARGOS 
+Cargo{id=4, name='apple', weight=100, cargoType=FOOD, transportations=[Transportation{description='Vip Order', Carrier='YOUR_DELIVERY', Cargo=apple}]}
+Cargo{id=5, name='orange', weight=300, cargoType=FOOD, transportations=[Transportation{description='Fragile', Carrier='YOUR_DELIVERY', Cargo=orange}]}
+Cargo{id=6, name='Jeans', weight=200, cargoType=CLOTHERS, transportations=[Transportation{description='Fragile', Carrier='FASTEST EVER', Cargo=Jeans}]}
+-----------------
+ALL CARRIERS 
+Carrier{id='7'name='YOUR_DELIVERY', address='Spb,Nevskiy 800', carrierType=SHIP}
+Carrier{id='8'name='FASTEST EVER', address='Spb, Prosveheniya 900', carrierType=PLANE}
+-----------------
+ALL TRANSPORTATIONS 
+Transportation{description='Vip Order', Carrier='YOUR_DELIVERY', Cargo=apple}
+Transportation{description='Fragile', Carrier='YOUR_DELIVERY', Cargo=orange}
+Transportation{description='Fragile', Carrier='FASTEST EVER', Cargo=Jeans}
+-----------------
