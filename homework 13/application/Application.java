@@ -46,9 +46,9 @@ public class Application {
       StorageInitor storageInitor = getStorageInitor(InitStorageType.XML_SAX);
       storageInitor.initStorage();
 
-    //  printStorageData();
-   //  demoSortOperations();
-    //  demoExceptions();
+      printStorageData();
+     demoSortOperations();
+      demoExceptions();
 
       demoReportService();
     } catch (InitStorageException e) {
