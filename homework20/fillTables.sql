@@ -1,0 +1,13 @@
+INSERT INTO PUBLIC.CARGO VALUES
+('FOOD','APPLE',100,'2025-12-20',-50,NULL,NULL,'1_A'),
+('CLOTHES','JEANS',200,NULL,NULL,'XXL','COTTON','2_A'),
+('FOOD','ORANGE',300,'2020-11-11',-20,NULL,NULL,'3_A');
+
+INSERT INTO PUBLIC.CARRIERS VALUES
+('1_b','YOUR_DELIVERY','Spb,Nevskiy pr, 800','SHIP'),
+('2_b','FASTEST_EVER','Spb,Prosvechenya,900','PLANE');
+
+INSERT INTO PUBLIC.TRANSPORTATION VALUES
+('1_a','1_b','Ivanov','2010-11-11','Vip order'),
+('2_a','1_b','Petrov','2010-11-11','Fragile'),
+('3_a','2_b','Sidorov','2017-01-01','Fragile');
